@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { nanoid } from 'nanoid';
+
 import css from './App.module.css';
 import { Notify } from 'notiflix';
 import { ContactsList } from './ContactsList/ContactsList';
@@ -45,7 +45,6 @@ componentDidUpdate(prevState){
     localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
   }
 }
-
 
   deleteContact = (id) => {
       this.setState((prevState) => ({
