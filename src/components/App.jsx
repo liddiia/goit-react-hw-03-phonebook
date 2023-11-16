@@ -15,7 +15,8 @@ export class App extends Component {
     filter: '',
   };
 
-  addContact  = (contact) => {
+  
+    addContact  = (contact) => {
     const hasDuplicates = this.state.contacts.some(cont =>
 cont.name.toLowerCase() === contact.name.toLowerCase()
     )
@@ -27,6 +28,24 @@ cont.name.toLowerCase() === contact.name.toLowerCase()
         contacts: [...prevState.contacts, contact],
       }))
     };
+
+    componentDidUpdate (_, prevState) {
+      if (prevState.name.length !== this.state.name.length) {
+        localStorage.setItem("state", JSON.stringify(this.state));
+      }
+    }
+
+componentDidMount() {
+  const stringifyContacts=localStorage.getItem('contacts');
+  const parsedContacts = JSON.parse(stringifyContacts)??[];
+  this.setState({contacts: parsedContacts});
+}
+componentDidUpdate(prevState){
+  if(prevState.contacts!== this.state.contacts){
+    localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+  }
+}
+
 
   deleteContact = (id) => {
       this.setState((prevState) => ({

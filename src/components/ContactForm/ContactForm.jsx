@@ -16,7 +16,19 @@ export class ContactForm extends Component {
   handleChange = (evt) => {
     this.setState({ [evt.target.name]: evt.target.value })
   }
+   componentDidUpdate (_, prevState) {
+    if (prevState.name.length !== this.state.name.length) {
+      localStorage.setItem("state", JSON.stringify(this.state));
+    }
+  }
+// addContact = ({name, number}) => {
+//   const {name, number} = JSON.parse(localStorage.getItem("state"));
+// if (newContact) {
+//     this.SetState((prevState) => {return {...prevState.contacts, {id: nanoid(), name: {name}, number: {number}}}})}
+//     console.log(this.state)
+//   }
 
+ 
   render() {
     return (
       // <dir className={css.formBox}>
