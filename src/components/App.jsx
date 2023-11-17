@@ -28,12 +28,7 @@ cont.name.toLowerCase() === contact.name.toLowerCase()
       }))
     };
 
-    // componentDidUpdate (_, prevState) {
-    //   if (prevState.name.length !== this.state.name.length) {
-    //     localStorage.setItem("state", JSON.stringify(this.state));
-    //   }
-    // }
-
+    
 componentDidMount() {
   
   const Contacts = JSON.parse(localStorage.getItem('contacts'))??[];
